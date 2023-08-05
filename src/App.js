@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component, useState } from "react";
 
-function App() {
+
+
+function App(props) {
+  const [count,setCount] = useState(props.count)
+  const [text,setText] = useState(props.text)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container mt-3">
+      <p>Button pressed {count} times.</p>
+      <p>Text: {text} </p>
+      <button onClick={() => setCount(count+1)} className="btn btn-primary me-1">
+        +1
+      </button>
+      <button onClick={() => setCount(count-1)} className="btn btn-primary me-1">
+        -1
+      </button>
+      <button onClick={() => setCount(props.count)} className="btn btn-primary me-1">
+        Reset
+      </button>
+      <input type="text" value={text} onChange={(e) => { setText(e.target.value) }}/>
     </div>
   );
 }
